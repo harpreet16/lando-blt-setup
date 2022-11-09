@@ -804,3 +804,6 @@ require DRUPAL_ROOT . "/../vendor/acquia/blt/settings/blt.settings.php";
  *
  * @link https://docs.acquia.com/blt/
  */
+
+$settings['config_sync_directory'] = '../config/default';
+

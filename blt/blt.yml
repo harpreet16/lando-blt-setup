@@ -24,6 +24,9 @@ project:
 git:
   default_branch: master
   remotes: {  }
+  hooks:
+    pre-commit: false
+    commit-msg: false
 deploy:
   # When manually deploying a tag, also tag the source repository.
   tag_source: true
@@ -74,3 +77,7 @@ modules:
     uninstall:
       - devel
       - views_ui
+phpcs:
+  filesets:
+    - files.php.custom.modules
+    - files.php.custom.themes

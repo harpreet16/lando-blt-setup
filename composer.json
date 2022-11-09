@@ -28,7 +28,16 @@
         "platform": {
             "php": "7.2"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "grasmash/drupal-security-warning": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "oomphinc/composer-installers-extender": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "acquia/blt": true
+        }
     },
     "extra": {
         "composer-exit-on-patch-failure": true,

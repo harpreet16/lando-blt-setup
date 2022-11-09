@@ -1,0 +1,35 @@
+name: landobltsetup
+recipe: drupal9
+config:
+  webroot: docroot
+  database: mysql
+  drush: ^10
+  xdebug: true
+
+services:
+  appserver:
+    type: php
+    php: "7.4"
+    composer_version: "2.1.5"
+    build:
+      - "cd /app && composer install"
+
+proxy:
+  appserver:
+    - landobltsetup.lndo.site
+
+tooling:
+  blt:
+    service: appserver
+    cmd: "/app/vendor/bin/blt"
+  drush:
+    service: appserver
+    cmd: "/app/vendor/bin/drush"
+  phpcs:
+    service: appserver
+    cmd: "/app/vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,md,yml --ignore=node_modules,bower_components,vendor"
+    options:
+    description: Runs Drupal Coding Standards for given folder or file. Ex. lando phpcs docroot/modules/custom/module
+  composer:
+    service: appserver
+    cmd: "/usr/local/bin/composer"
